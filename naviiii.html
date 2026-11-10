@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Our Sweet Moments 💗</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+
+    font-family: Georgia, serif;
+
+    background: linear-gradient(
+        135deg,
+        #fff5f8,
+        #ffe0eb,
+        #ffedf4
+    );
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 55px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title {
+    color: #c72f66;
+
+    font-size: 32px;
+    font-weight: bold;
+
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #a95a75;
+
+    font-size: 16px;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================
+   CARD AREA
+========================= */
+
+.card-area {
+
+    position: relative;
+
+    width: 310px;
+    height: 440px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================
+   PHOTO CARD
+========================= */
+
+.card {
+
+    position: absolute;
+
+    width: 285px;
+    height: 410px;
+
+    padding: 13px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 25px
+        rgba(150,70,100,0.20);
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
+
+    user-select: none;
+
+    touch-action: pan-y;
+}
+
+
+/* PHOTO */
+
+.card img {
+
+    width: 100%;
+    height: 330px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    display: block;
+}
+
+
+/* CAPTION */
+
+.caption {
+
+    color: #bd3968;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin-top: 13px;
+}
+
+
+/* =========================
+   CARD POSITIONS
+========================= */
+
+.card:nth-child(1) {
+    z-index: 6;
+    transform: rotate(-2deg);
+}
+
+.card:nth-child(2) {
+    z-index: 5;
+    transform:
+        translate(7px, 8px)
+        rotate(3deg);
+}
+
+.card:nth-child(3) {
+    z-index: 4;
+    transform:
+        translate(13px, 15px)
+        rotate(-4deg);
+}
+
+.card:nth-child(4) {
+    z-index: 3;
+    transform:
+        translate(18px, 20px)
+        rotate(5deg);
+}
+
+.card:nth-child(5) {
+    z-index: 2;
+    transform:
+        translate(23px, 25px)
+        rotate(-6deg);
+}
+
+.card:nth-child(6) {
+    z-index: 1;
+    transform:
+        translate(28px, 30px)
+        rotate(6deg);
+}
+
+
+/* =========================
+   SWIPE ANIMATION
+========================= */
+
+.card.swipe-left {
+
+    transform:
+        translateX(-500px)
+        rotate(-25deg);
+
+    opacity: 0;
+}
+
+.card.swipe-right {
+
+    transform:
+        translateX(500px)
+        rotate(25deg);
+
+    opacity: 0;
+}
+
+
+/* =========================
+   SWIPE TEXT
+========================= */
+
+.swipe-text {
+
+    margin-top: 18px;
+
+    color: #a84d6b;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   CONTINUE BUTTON
+========================= */
+
+.continue-btn {
+
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 12px 30px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: #e75480;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px
+        rgba(190,60,100,0.25);
+
+    animation: buttonShow 0.6s ease;
+}
+
+
+.continue-btn:active {
+    transform: scale(0.95);
+}
+
+
+@keyframes buttonShow {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- TITLE -->
+
+    <div class="title">
+        Our Sweet Moments 💗
+    </div>
+
+
+    <div class="subtitle">
+        (Swipe the cards!)
+    </div>
+
+
+    <!-- CARD AREA -->
+
+    <div class="card-area" id="cardArea">
+
+
+        <!-- PHOTO 1 -->
+
+        <div class="card">
+
+            <img src="c:\Users\Lokes\Downloads\WhatsApp Image 2026-09-24 at 3.17.03 PM.jpeg">
+
+            <div class="caption">
+                Celebrating you 🎉
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 2 -->
+
+        <div class="card">
+
+            <img src="c:\Users\Lokes\Downloads\WhatsApp Image 2026-09-24 at 3.25.43 PM.jpeg">
+
+            <div class="caption">
+                Happy moments 💕
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 3 -->
+
+        <div class="card">
+
+            <img src="c:\Users\Lokes\Downloads\1724218584194.jpg" alt="Personal photo shared as a beautiful memory. The people, activity, and setting are not identifiable from the available information; the tone is affectionate and nostalgic.">
+
+            <div class="caption">
+                Beautiful memories 🌸
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 4 -->
+
+        <div class="card">
+
+            <img src="c:\Users\Lokes\Downloads\loki image 2.jpeg">
+
+            <div class="caption">
+                Forever memories 🥰
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 5 -->
+
+        <div class="card">
+
+            <img src="c:\Users\Lokes\Downloads\navi image 2.jpeg">
+            <div class="caption">
+                Special moments 💗
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 6 -->
+
+        <div class="card">
+
+            <img src="c:\Users\Lokes\Downloads\navi image.jpeg">
+
+            <div class="caption">
+                With you always ❤️
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="swipe-text" id="swipeText">
+        👈 Swipe left or right 👉
+    </div>
+
+
+    <!-- CONTINUE BUTTON -->
+
+    <button
+        class="continue-btn"
+        id="continueBtn"
+        onclick="continuePage()">
+
+        Continue ➜
+
+    </button>
+
+
+</div>
+
+
+
+<script>
+
+const cards =
+    document.querySelectorAll(".card");
+
+let currentCard = 0;
+
+let startX = 0;
+let endX = 0;
+
+
+/* =========================
+   TOUCH SWIPE
+========================= */
+
+cards.forEach((card, index) => {
+
+    card.addEventListener("touchstart", function(e) {
+
+        if (index !== currentCard) return;
+
+        startX = e.touches[0].clientX;
+
+    });
+
+
+    card.addEventListener("touchend", function(e) {
+
+        if (index !== currentCard) return;
+
+        endX = e.changedTouches[0].clientX;
+
+        handleSwipe();
+
+    });
+
+});
+
+
+/* =========================
+   MOUSE SWIPE
+========================= */
+
+cards.forEach((card, index) => {
+
+    card.addEventListener("mousedown", function(e) {
+
+        if (index !== currentCard) return;
+
+        startX = e.clientX;
+
+    });
+
+
+    card.addEventListener("mouseup", function(e) {
+
+        if (index !== currentCard) return;
+
+        endX = e.clientX;
+
+        handleSwipe();
+
+    });
+
+});
+
+
+/* =========================
+   HANDLE SWIPE
+========================= */
+
+function handleSwipe() {
+
+    let distance =
+        endX - startX;
+
+
+    if (distance < -60) {
+
+        swipeCard("left");
+
+    }
+
+
+    else if (distance > 60) {
+
+        swipeCard("right");
+
+    }
+
+}
+
+
+/* =========================
+   SWIPE CARD
+========================= */
+
+function swipeCard(direction) {
+
+    if (currentCard >= cards.length) {
+        return;
+    }
+
+
+    const card =
+        cards[currentCard];
+
+
+    if (direction === "left") {
+
+        card.classList.add("swipe-left");
+
+    }
+
+    else {
+
+        card.classList.add("swipe-right");
+
+    }
+
+
+    currentCard++;
+
+
+    /* =========================
+       AFTER LAST PHOTO
+    ========================= */
+
+    if (currentCard === cards.length) {
+
+        setTimeout(function() {
+
+            document
+                .getElementById("swipeText")
+                .innerHTML =
+                "💗 Beautiful memories 💗";
+
+
+            document
+                .getElementById("continueBtn")
+                .style.display = "block";
+
+        }, 500);
+
+    }
+
+
+    else {
+
+        setTimeout(function() {
+
+            cards[currentCard].style.zIndex = 10;
+
+        }, 100);
+
+    }
+
+}
+
+
+/* =========================
+   CONTINUE TO PAGE 4
+========================= */
+
+function continuePage() {
+
+    window.location.href = "navi5.html";
+
+}
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Navi Kutty 💗</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Georgia, serif;
+
+    background: linear-gradient(
+        135deg,
+        #fff1f6,
+        #ffd9e8,
+        #ffeaf2
+    );
+}
+
+
+/* =========================
+   CANDLE PAGE
+========================= */
+
+.candle-page {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 65px;
+}
+
+.title {
+    color: #c92f68;
+    font-size: 28px;
+    font-weight: bold;
+
+    margin-bottom: 60px;
+}
+
+
+/* CAKE */
+
+.cake-area {
+    position: relative;
+
+    width: 280px;
+    height: 330px;
+
+    display: flex;
+    justify-content: center;
+}
+
+
+/* PLATE */
+
+.plate {
+    position: absolute;
+
+    width: 230px;
+    height: 28px;
+
+    left: 25px;
+    bottom: 45px;
+
+    background: #fff;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,0.08);
+}
+
+
+/* CAKE */
+
+.cake {
+    position: absolute;
+
+    width: 210px;
+    height: 100px;
+
+    left: 35px;
+    bottom: 65px;
+
+    background: #5b302f;
+
+    border-radius:
+        15px 15px 35px 35px;
+}
+
+
+/* CREAM */
+
+.cream {
+    position: absolute;
+
+    width: 210px;
+    height: 45px;
+
+    left: 0;
+    top: -15px;
+
+    background: #fffde5;
+
+    border-radius:
+        20px 20px 35px 35px;
+}
+
+
+/* CANDLE */
+
+.candle {
+    position: absolute;
+
+    width: 22px;
+    height: 100px;
+
+    left: 129px;
+    bottom: 150px;
+
+    background: #a52f4d;
+
+    border-radius: 3px;
+
+    cursor: pointer;
+
+    z-index: 5;
+}
+
+
+/* FLAME */
+
+.flame {
+    position: absolute;
+
+    width: 25px;
+    height: 36px;
+
+    left: -2px;
+    top: -35px;
+
+    background: #ffbd32;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 15px #ffb300,
+        0 0 30px rgba(255,180,0,0.5);
+
+    animation: flame 0.8s infinite alternate;
+}
+
+.flame::after {
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 18px;
+
+    left: 8px;
+    bottom: 2px;
+
+    background: #fff4b0;
+
+    border-radius: 50%;
+}
+
+@keyframes flame {
+
+    from {
+        transform: rotate(-5deg) scale(1);
+    }
+
+    to {
+        transform: rotate(5deg) scale(1.08);
+    }
+}
+
+
+/* FLAME OFF */
+
+.flame.off {
+    animation: blowOut 0.5s forwards;
+}
+
+@keyframes blowOut {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateY(-15px)
+            scale(0.1);
+    }
+}
+
+
+.instruction {
+    position: absolute;
+
+    bottom: 5px;
+
+    width: 100%;
+
+    color: #a34465;
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   WISH PAGE
+========================= */
+
+.wish-page {
+    display: none;
+
+    width: 100%;
+    height: 100vh;
+
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #ffeaf3,
+        #ffd2e4,
+        #fff0f6
+    );
+}
+
+
+/* TEDDY */
+
+.teddy {
+    font-size: 115px;
+
+    margin-bottom: 25px;
+
+    animation: teddyFloat 2s infinite ease-in-out;
+
+    filter:
+        drop-shadow(
+            0 8px 8px
+            rgba(120,60,80,0.15)
+        );
+}
+
+@keyframes teddyFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* WISH TEXT */
+
+.wish-text {
+    color: #c52f66;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    line-height: 1.35;
+
+    text-shadow:
+        0 2px 5px
+        rgba(130,40,70,0.15);
+
+    animation: textAppear 0.8s ease;
+}
+
+@keyframes textAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* SMALL MESSAGE */
+
+.small-text {
+    margin-top: 12px;
+
+    color: #a34465;
+
+    font-size: 17px;
+}
+
+
+/* CONTINUE */
+
+.continue-btn {
+
+    margin-top: 35px;
+
+    padding: 13px 32px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: #e75480;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px
+        rgba(200,60,110,0.3);
+
+    transition: 0.2s;
+}
+
+.continue-btn:hover {
+    transform: scale(1.06);
+    background: #d63d6d;
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     PAGE 2 - CANDLE
+========================= -->
+
+<div class="candle-page" id="candlePage">
+
+    <div class="title">
+        Make a wish, Navi kutty 💗
+    </div>
+
+
+    <div class="cake-area">
+
+        <!-- Plate -->
+
+        <div class="plate"></div>
+
+
+        <!-- Cake -->
+
+        <div class="cake">
+
+            <div class="cream"></div>
+
+        </div>
+
+
+        <!-- Candle -->
+
+        <div
+            class="candle"
+            id="candle"
+            onclick="blowCandle()">
+
+            <div
+                class="flame"
+                id="flame">
+            </div>
+
+        </div>
+
+
+        <div class="instruction">
+            🖐️ Tap the candle to blow
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     WISH PAGE
+========================= -->
+
+<div class="wish-page" id="wishPage">
+
+
+    <!-- TEDDY -->
+
+    <div class="teddy">
+        🧸
+    </div>
+
+
+    <!-- TEXT -->
+
+    <div class="wish-text">
+
+        Close your eyes<br>
+        & make a wish ✨
+
+    </div>
+
+
+    <div class="small-text">
+
+        Make a beautiful wish, Navi kutty 💗
+
+    </div>
+
+
+    <!-- CONTINUE -->
+
+    <button
+        class="continue-btn"
+        onclick="continuePage()">
+
+        Continue ➜
+
+    </button>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   BLOW CANDLE
+========================= */
+
+function blowCandle() {
+
+    const flame =
+        document.getElementById("flame");
+
+
+    /* Prevent second click */
+
+    if (flame.classList.contains("off")) {
+        return;
+    }
+
+
+    /* Turn flame off */
+
+    flame.classList.add("off");
+
+
+    /* Show wish page */
+
+    setTimeout(function() {
+
+        document
+            .getElementById("candlePage")
+            .style.display = "none";
+
+
+        document
+            .getElementById("wishPage")
+            .style.display = "flex";
+
+    }, 600);
+
+}
+
+
+/* =========================
+   CONTINUE
+========================= */
+
+function continuePage() {
+
+    window.location.href = "navi4.html";
+
+}
+
+</script>
+
+
+</body>
+</html>

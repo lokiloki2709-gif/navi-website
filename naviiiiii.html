@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>One Last Thing 💗</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+
+    font-family:Georgia,serif;
+
+    background:linear-gradient(
+        135deg,
+        #fff7fa,
+        #ffe5ee,
+        #fff0f5
+    );
+
+    text-align:center;
+}
+
+
+/* =========================
+   MAIN PAGE
+========================= */
+
+.page{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    padding-top:80px;
+
+    position:relative;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    color:#c52f65;
+
+    font-size:42px;
+    font-weight:bold;
+
+    font-style:italic;
+
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#9d536c;
+
+    font-size:19px;
+
+    margin-bottom:45px;
+}
+
+
+/* =========================
+   GIFT
+========================= */
+
+.gift-container{
+    position:relative;
+
+    width:190px;
+    height:180px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:transform .25s ease;
+}
+
+.gift{
+    font-size:125px;
+
+    filter:
+        drop-shadow(0 12px 15px rgba(190,70,110,.20));
+
+    transition:
+        transform .25s ease,
+        filter .25s ease;
+}
+
+
+/* tap effect */
+
+.gift.tap{
+    animation:shake .35s ease;
+}
+
+@keyframes shake{
+
+    0%{
+        transform:rotate(0deg) scale(1);
+    }
+
+    25%{
+        transform:rotate(-8deg) scale(1.08);
+    }
+
+    50%{
+        transform:rotate(8deg) scale(1.08);
+    }
+
+    75%{
+        transform:rotate(-5deg) scale(1.08);
+    }
+
+    100%{
+        transform:rotate(0deg) scale(1);
+    }
+}
+
+
+/* =========================
+   TAP COUNT
+========================= */
+
+.tap-text{
+    margin-top:20px;
+
+    color:#a84f6e;
+
+    font-size:17px;
+
+    font-weight:bold;
+}
+
+.tap-count{
+    color:#cf3b70;
+}
+
+
+/* =========================
+   FINAL MESSAGE
+========================= */
+
+.final-card{
+
+    display:none;
+
+    width:330px;
+    min-height:390px;
+
+    background:#fffef5;
+
+    border-radius:20px;
+
+    padding:30px 25px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(150,70,100,.25);
+
+    animation:cardOpen .8s ease;
+}
+
+@keyframes cardOpen{
+
+    0%{
+        opacity:0;
+        transform:scale(.5) rotate(-8deg);
+    }
+
+    70%{
+        transform:scale(1.08) rotate(2deg);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1) rotate(0deg);
+    }
+}
+
+.final-title{
+    color:#c72f66;
+
+    font-size:27px;
+
+    font-weight:bold;
+
+    margin-bottom:25px;
+}
+
+.final-image{
+    font-size:90px;
+
+    margin-bottom:20px;
+}
+
+.final-text{
+    color:#693c4d;
+
+    font-size:17px;
+
+    line-height:1.7;
+}
+
+
+/* =========================
+   REPLAY BUTTON
+========================= */
+
+.replay{
+
+    margin-top:25px;
+
+    padding:13px 38px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:white;
+
+    color:#c43769;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 6px 18px
+        rgba(180,70,110,.20);
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.replay:hover{
+    transform:scale(1.08);
+}
+
+.replay:active{
+    transform:scale(.95);
+}
+
+
+/* =========================
+   HEARTS / CONFETTI
+========================= */
+
+.heart{
+    position:fixed;
+
+    font-size:25px;
+
+    pointer-events:none;
+
+    animation:floatUp 2s ease-out forwards;
+}
+
+@keyframes floatUp{
+
+    0%{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(.5)
+            rotate(0deg);
+    }
+
+    100%{
+        opacity:0;
+        transform:
+            translateY(-500px)
+            scale(1.4)
+            rotate(360deg);
+    }
+}
+
+
+/* =========================
+   GLOW
+========================= */
+
+.glow{
+    animation:glow .8s ease;
+}
+
+@keyframes glow{
+
+    0%{
+        filter:
+        drop-shadow(0 0 0px #ff7fa8);
+    }
+
+    50%{
+        filter:
+        drop-shadow(0 0 35px #ff72a0);
+    }
+
+    100%{
+        filter:
+        drop-shadow(0 12px 15px rgba(190,70,110,.20));
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="page" id="startPage">
+
+    <div class="title">
+        One Last Thing... 💗
+    </div>
+
+    <div class="subtitle">
+        Tap the gift 🎁
+    </div>
+
+
+    <!-- GIFT -->
+
+    <div class="gift-container"
+         id="giftBox"
+         onclick="tapGift()">
+
+        <div class="gift" id="gift">
+            🎁
+        </div>
+
+    </div>
+
+
+    <div class="tap-text">
+        Tap <span class="tap-count" id="tapCount">5</span>
+        more times 💕
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     FINAL MESSAGE
+========================= -->
+
+<div class="page"
+     id="finalPage"
+     style="display:none;">
+
+    <div class="final-card"
+         id="finalCard">
+
+        <div class="final-title">
+            Lots of love for you ❤️
+        </div>
+
+        <div class="final-image">
+            🐥 🧸
+        </div>
+
+        <div class="final-text">
+
+            Once again, Happy Birthday!!! 🎂💗
+            Kutty chellameeeeeee 🥰
+
+            <br><br>
+
+            I hope you loved your little surprise
+            and all these sweet moments. 🥰
+
+            <br><br>
+
+            Lots and lots of love for you! ❤️
+
+        </div>
+
+        <button class="replay"
+                onclick="replay()">
+
+            ↻ Replay
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+let taps = 0;
+
+const totalTaps = 5;
+
+const gift =
+    document.getElementById("gift");
+
+const giftBox =
+    document.getElementById("giftBox");
+
+const tapCount =
+    document.getElementById("tapCount");
+
+const startPage =
+    document.getElementById("startPage");
+
+const finalPage =
+    document.getElementById("finalPage");
+
+const finalCard =
+    document.getElementById("finalCard");
+
+
+/* =========================
+   GIFT TAP
+========================= */
+
+function tapGift(){
+
+    if(taps >= totalTaps){
+        return;
+    }
+
+    taps++;
+
+    /* shake */
+
+    gift.classList.remove("tap");
+
+    void gift.offsetWidth;
+
+    gift.classList.add("tap");
+
+
+    /* glow */
+
+    gift.classList.remove("glow");
+
+    void gift.offsetWidth;
+
+    gift.classList.add("glow");
+
+
+    /* update count */
+
+    let remaining =
+        totalTaps - taps;
+
+    tapCount.innerText =
+        remaining;
+
+
+    /* small hearts */
+
+    createHearts(3);
+
+
+    /* FINAL TAP */
+
+    if(taps === totalTaps){
+
+        setTimeout(function(){
+
+            openGift();
+
+        },500);
+
+    }
+
+}
+
+
+/* =========================
+   OPEN GIFT
+========================= */
+
+function openGift(){
+
+    /* big effect */
+
+    gift.style.transform =
+        "scale(1.5)";
+
+    gift.style.opacity =
+        "0";
+
+
+    createHearts(25);
+
+
+    setTimeout(function(){
+
+        startPage.style.display =
+            "none";
+
+        finalPage.style.display =
+            "flex";
+
+        finalCard.style.display =
+            "block";
+
+    },700);
+
+}
+
+
+/* =========================
+   HEART EFFECT
+========================= */
+
+function createHearts(amount){
+
+    for(let i=0;i<amount;i++){
+
+        const heart =
+            document.createElement("div");
+
+        heart.className =
+            "heart";
+
+        const emojis = [
+            "💗",
+            "💕",
+            "❤️",
+            "💖",
+            "✨",
+            "🌸"
+        ];
+
+        heart.innerText =
+            emojis[
+                Math.floor(
+                    Math.random()*emojis.length
+                )
+            ];
+
+
+        heart.style.left =
+            Math.random()*100 + "vw";
+
+        heart.style.top =
+            (55 + Math.random()*25) + "vh";
+
+
+        heart.style.animationDuration =
+            (1.5 + Math.random()*1.5) + "s";
+
+
+        document.body.appendChild(heart);
+
+
+        setTimeout(function(){
+
+            heart.remove();
+
+        },3000);
+
+    }
+
+}
+
+
+/* =========================
+   REPLAY
+========================= */
+
+function replay(){
+
+    window.location.href = "navi.html";
+
+}
+
+</script>
+
+</body>
+</html>

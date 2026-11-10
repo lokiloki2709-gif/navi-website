@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Message From My Heart 💗</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+
+    font-family: Georgia, serif;
+
+    background: linear-gradient(
+        135deg,
+        #fff8fb,
+        #ffe5ef,
+        #ffd9e8
+    );
+}
+
+
+/* MAIN PAGE */
+
+.page {
+    width: 100%;
+    height: 100vh;
+
+    text-align: center;
+
+    padding-top: 60px;
+
+    position: relative;
+}
+
+
+/* TITLE */
+
+.title {
+    color: #a52d59;
+
+    font-size: 34px;
+    font-weight: bold;
+
+    margin-bottom: 8px;
+
+    transition: 0.5s;
+}
+
+.title.shake {
+    animation: shake 0.7s ease;
+}
+
+@keyframes shake {
+
+    0%   { transform: translateX(0); }
+
+    20%  { transform: translateX(-8px); }
+
+    40%  { transform: translateX(8px); }
+
+    60%  { transform: translateX(-6px); }
+
+    80%  { transform: translateX(6px); }
+
+    100% { transform: translateX(0); }
+}
+
+
+.subtitle {
+    color: #9d6378;
+    font-size: 16px;
+    margin-bottom: 45px;
+}
+
+
+/* ENVELOPE AREA */
+
+.envelope-area {
+    width: 330px;
+    height: 260px;
+
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ENVELOPE */
+
+.envelope {
+
+    position: relative;
+
+    width: 300px;
+    height: 190px;
+
+    background: #fffef0;
+
+    border: 3px solid #d8b95b;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 15px 35px rgba(130,70,90,0.20);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.8s ease,
+        opacity 0.8s ease;
+}
+
+
+/* FLAP */
+
+.flap {
+
+    position: absolute;
+
+    top: -2px;
+    left: -2px;
+
+    width: 300px;
+    height: 125px;
+
+    background: #fff9cf;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    border-top: 3px solid #d8b95b;
+
+    transform-origin: top;
+
+    transition: transform 0.9s ease;
+
+    z-index: 5;
+}
+
+
+/* HEART */
+
+.heart {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    font-size: 42px;
+
+    z-index: 10;
+
+    transition: 0.5s;
+}
+
+
+/* OPEN */
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .heart {
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    opacity: 0;
+}
+
+
+/* TAP TEXT */
+
+.tap-text {
+
+    margin-top: 20px;
+
+    color: #98405f;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   MESSAGE SCREEN
+========================= */
+
+.message-screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: linear-gradient(
+        135deg,
+        #fff8fb,
+        #ffe5ef,
+        #ffd9e8
+    );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 25px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: scale(0.9);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+
+    z-index: 100;
+}
+
+
+.message-screen.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: scale(1);
+}
+
+
+/* MESSAGE CARD */
+
+.message-card {
+
+    width: 100%;
+
+    max-width: 420px;
+
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    background: #fffef0;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    border: 2px solid #eadb9b;
+
+    box-shadow:
+        0 18px 50px
+        rgba(130,60,90,0.25);
+
+    text-align: left;
+
+    animation:
+        cardPop 0.7s ease;
+}
+
+
+@keyframes cardPop {
+
+    0% {
+        transform: scale(0.5) rotate(-4deg);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.05) rotate(2deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+
+/* CARD TITLE */
+
+.message-card h2 {
+
+    color: #a52d59;
+
+    font-size: 25px;
+
+    margin-top: 0;
+
+    margin-bottom: 25px;
+}
+
+
+/* HEART */
+
+.card-heart {
+
+    float: right;
+
+    font-size: 30px;
+
+    animation: beat 1.2s infinite;
+}
+
+
+@keyframes beat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+
+/* PARAGRAPH */
+
+.message-card p {
+
+    color: #684b57;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    white-space: pre-line;
+
+    margin-bottom: 25px;
+}
+
+
+/* CONTINUE BUTTON */
+
+.continue-btn {
+
+    display: block;
+
+    margin: 25px auto 0;
+
+    padding: 13px 32px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d83f75,
+            #ed719b
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-family: Georgia, serif;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px
+        rgba(200,50,100,0.25);
+
+    transition: 0.3s;
+}
+
+
+.continue-btn:active {
+
+    transform: scale(0.94);
+}
+
+
+/* SPARKLES */
+
+.sparkle {
+
+    position: fixed;
+
+    font-size: 25px;
+
+    z-index: 200;
+
+    pointer-events: none;
+
+    animation:
+        sparkle 1.2s ease-out forwards;
+}
+
+
+@keyframes sparkle {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            translate(0,0)
+            scale(0.5);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(var(--x),var(--y))
+            scale(1.4);
+    }
+}
+
+
+/* MOBILE */
+
+@media(max-width:500px) {
+
+    .title {
+        font-size: 28px;
+    }
+
+    .envelope {
+        width: 280px;
+        height: 175px;
+    }
+
+    .flap {
+        width: 280px;
+    }
+
+    .message-card {
+        max-width: 360px;
+        padding: 25px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="page" id="mainPage">
+
+    <div class="title" id="title">
+        A Message From My Heart 💗
+    </div>
+
+    <div class="subtitle">
+        Tap the envelope to open
+    </div>
+
+
+    <div class="envelope-area">
+
+        <div
+            class="envelope"
+            id="envelope"
+            onclick="openEnvelope()"
+        >
+
+            <div class="flap"></div>
+
+            <div class="heart">
+                💗
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="tap-text">
+        TAP TO OPEN
+    </div>
+
+</div>
+
+
+
+<!-- MESSAGE SCREEN -->
+
+<div
+    class="message-screen"
+    id="messageScreen"
+>
+
+    <div class="message-card">
+
+        <div class="card-heart">
+            💗
+        </div>
+
+        <h2>
+            Dear Navi kutty 💗
+        </h2>
+
+
+        <!-- YOUR MESSAGE -->
+
+        <p>
+Happy Birthday to someone truly special 🎂
+
+You are sweet, caring and so special to me.
+I am so grateful to have you in my life. 💕
+
+You bring so much happiness and warmth
+into my life.
+
+May all your wishes come true
+and may you always keep smiling. 🥰
+        </p>
+
+
+        <!-- CONTINUE -->
+
+        <button
+            class="continue-btn"
+            onclick="continuePage()"
+        >
+            Continue 💕
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* OPEN ENVELOPE */
+
+function openEnvelope() {
+
+    const envelope =
+        document.getElementById("envelope");
+
+    const title =
+        document.getElementById("title");
+
+    const mainPage =
+        document.getElementById("mainPage");
+
+    const messageScreen =
+        document.getElementById("messageScreen");
+
+
+    /* Prevent second tap */
+
+    if (envelope.classList.contains("open")) {
+        return;
+    }
+
+
+    /* Envelope open */
+
+    envelope.classList.add("open");
+
+
+    /* Title effect */
+
+    title.classList.add("shake");
+
+
+    /* Sparkle effect */
+
+    createSparkles();
+
+
+    /* Wait for envelope animation */
+
+    setTimeout(function() {
+
+        /*
+        MAIN PAGE COMPLETELY HIDE
+        */
+
+        mainPage.style.display = "none";
+
+
+        /*
+        MESSAGE SCREEN SHOW
+        */
+
+        messageScreen.classList.add("show");
+
+    }, 850);
+
+}
+
+
+/* SPARKLES */
+
+function createSparkles() {
+
+    const symbols = [
+        "✨",
+        "💗",
+        "💕",
+        "💖",
+        "🌸"
+    ];
+
+
+    for(let i = 0; i < 20; i++) {
+
+        const sparkle =
+            document.createElement("div");
+
+        sparkle.className =
+            "sparkle";
+
+        sparkle.innerHTML =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+
+        sparkle.style.left = "50%";
+        sparkle.style.top = "50%";
+
+
+        sparkle.style.setProperty(
+            "--x",
+            (Math.random() * 500 - 250) + "px"
+        );
+
+
+        sparkle.style.setProperty(
+            "--y",
+            (Math.random() * 500 - 250) + "px"
+        );
+
+
+        document.body.appendChild(
+            sparkle
+        );
+
+
+        setTimeout(function() {
+
+            sparkle.remove();
+
+        }, 1300);
+
+    }
+
+}
+
+
+/* CONTINUE → NEXT PAGE */
+
+function continuePage() {
+
+    window.location.href = "navi6.html";
+
+}
+
+</script>
+
+
+</body>
+</html>
